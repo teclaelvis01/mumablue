@@ -1,1 +1,41 @@
 /* You can add global styles to this file, and also import other style files */
+
+@import './assets/scss/utils';
+@import './assets/scss/fonts';
+
+// @import 'https://fonts.googleapis.com/icon?family=Material+Icons';
+
+
+
+body{
+    width: 100%;
+    font-family: "HK Grotesk";
+    font-size: .9rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: var(--dark-grey);
+    text-align: left;
+    background-color: #fff;
+
+}
+
+.shop-content{
+    .breadcrumb{
+        font-size: .8rem;
+        background-color: var(--white);
+        font-style: unset;
+        .breadcrumb-item{
+            a{
+                color: var(--dark-grey);
+                text-decoration: none;
+            }
+        }
+    }
+    .head-item{
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        margin-bottom: 2rem;
+        font-weight: bold;
+        font-size: 4.05rem;
+    }
+}

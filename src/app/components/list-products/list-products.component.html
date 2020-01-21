@@ -1,0 +1,35 @@
+<section class="shop-content">
+    <div class="container">
+        <div class="pb-5 text-center">
+            <h1 class="head-item">
+                Catálago
+            </h1>
+        </div>
+    </div>
+</section>
+
+<div class="container products-container">
+    <div class="row">
+        <div class="products-grid col">
+            <app-filters (filteredResults)="onReulstFilter($event)" [productos]="productos" [productosResults]="productosResults" [availableAges]="availableAges" [countries]="countries" [avatarsNumber]="avatarsNumber" [languages]="languages" [showConter]="productos.length"></app-filters>
+        </div>
+    </div>
+  
+    <div class="row row-content">
+        <div *ngFor="let product of productosResults | keyvalue" >
+            <div *ngIf="product.key==3" class="well">
+                
+            </div>
+            <app-product [product]="product.value"></app-product>
+        </div>
+    </div>
+    <div *ngIf="isLoading" class="row my-4">
+        <div class="col">
+            <div class="load-more text-center">
+                <div class="spinner-grow text-secondary" role="status">
+                    <span class="sr-only">Loading...</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

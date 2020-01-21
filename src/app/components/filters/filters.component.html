@@ -1,0 +1,92 @@
+<div class="grid-header">
+    <!-- Info pag -->
+    <div class="mr-3 mb-3">
+        Mostrando
+        <strong>{{productosResults.length}} </strong>
+        productos
+    </div>
+    <!-- Pag -->
+    <!-- Pag -->
+    <div class="mr-3 mb-3">
+        <span class="mr-2">Filtrar por:</span>
+
+        <div class="d-flex">
+            <div class="dropdown mr-1 ml-1">
+                <a href="javascript:;" class="filter-show pr-4" id="languajeId" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false">
+                    Idiomas
+                    <i class="material-icons caret">
+                        keyboard_arrow_down
+                    </i>
+                </a>
+
+                <div class="dropdown-menu" aria-labelledby="languajeId">
+                    <a *ngFor="let lan of languages" (click)="onFilter('language',lan)" class="dropdown-item"
+                        href="javascript:;">{{lan.name}}</a>
+                </div>
+            </div>
+            <div class="dropdown mr-1 ml-1">
+                <a href="javascript:;" class="filter-show pr-4" id="countryId" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false">
+                    Países
+                    <i class="material-icons caret">
+                        keyboard_arrow_down
+                    </i>
+                </a>
+                <div class="dropdown-menu" aria-labelledby="countryId">
+                    <a *ngFor="let country of countries" (click)="onFilter('countries',country)" class="dropdown-item"
+                        href="javascript:;">{{country | strcutinverse: -3}}</a>
+                </div>
+            </div>
+
+            <div class="dropdown mr-1 ml-1">
+                <a href="javascript:;" class="filter-show pr-4" id="numberId" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false">
+                    Número de personajes
+                    <i class="material-icons caret">
+                        keyboard_arrow_down
+                    </i>
+                </a>
+                <div class="dropdown-menu" aria-labelledby="numberId">
+                    <a *ngFor="let avNumber of avatarsNumber" (click)="onFilter('avatarNumber',avNumber)"
+                        class="dropdown-item" href="javascript:;">{{avNumber}} personajes</a>
+                </div>
+            </div>
+
+            <div class="dropdown mr-1 ml-1">
+                <a href="javascript:;" class="filter-show pr-4" id="ageId" data-toggle="dropdown" aria-haspopup="true"
+                    aria-expanded="false">
+                    Edades permitidas
+                    <i class="material-icons caret">
+                        keyboard_arrow_down
+                    </i>
+                </a>
+                <div class="dropdown-menu" aria-labelledby="ageId">
+                    <a *ngFor="let availableAge of availableAges" (click)="onFilter('availableAge',availableAge)"
+                        class="dropdown-item" href="javascript:;">{{availableAge}}</a>
+                </div>
+            </div>
+
+        </div>
+
+
+
+
+    </div>
+
+
+</div>
+
+
+
+<div class="row">
+    <div class="col">
+        <a *ngFor="let tag of tags" href="javascript:;" (click)="deleteTag(tag)" class="badge badge-secondary chip">
+            {{tag | removestr: '/api/countries/'}}
+            <i class="close material-icons">close</i>
+        </a>
+    </div>
+</div>
+
+<!-- 
+Para filtrar directamente en la api solo se puede por los campos que dice el, queremos que hagan un filtro en cliente sin hacer multiple llamas al servidor, usando product.personalizationParams.avatars (numero personajes), product.personalizationParams.avatars.availablesAges (edades permitida) y product.variations.language (idioma). -->

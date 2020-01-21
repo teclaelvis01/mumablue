@@ -1,0 +1,70 @@
+<div class="cardContainer inactive">
+    <div (click)="activeMe(myname)" #myname class="card-app">
+        <div class="side front">
+
+            <div class="img" [ngStyle]="{'background-image':'url('+product.photoUrl+')'}">
+            </div>
+            <div class="info">
+                <h2>{{product.namePanel}}</h2>
+                <div class="cprice">
+                    <span *ngIf="product.priceOld" class="text-muted mr-2 td-lt">{{product.priceOldCurrency}}</span>
+                    <span class="text-muted mr-2 ">{{product.priceCurrency}}</span>
+
+                    <div *ngFor="let variation of product.variations | keyvalue" class="languages">
+                        <div *ngIf="variation.key == 0">
+                            Variación:
+                            <div class="intem-lan badge badge-dark">{{variation.value.name}}</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="timing">
+                    <div>
+                        <div class="countdown_area">
+                            <div class="single_countdown">
+                                <div class="countdown_number">{{product.bookTotalPages}}</div>
+                                <div class="countdown_title">Pags.</div>
+                            </div>
+                            <div class="single_countdown">
+                                <div class="countdown_number">{{product.type}}</div>
+                                <div class="countdown_title">Tipo</div>
+                            </div>
+                            <div class="single_countdown">
+                                <div class="countdown_number">{{product.numVote}}</div>
+                                <div class="countdown_title">Votos</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="side back">
+            <div class="info">
+                <h2>{{product.namePanel}}</h2>
+                <div class="reviews">
+                    <i *ngFor="let star of createRange(product.rating)" class="material-icons svg">
+                        grade
+                    </i>
+
+                    <p>{{product.type}}</p>
+                </div>
+                <ul class="ul-info">
+                    <li *ngFor="let variation of product.variations">
+                        {{variation.synopsis}} <span class="badge badge-dark"> {{variation.language.name}} </span>
+                    </li>
+                </ul>
+                <div class="btn info-bottom">
+                    <div *ngIf="product.personalizationParams != null" class="d-flex w-100">
+                        <div *ngFor="let avatar of product.personalizationParams.avatars " class="content-item">
+                            <i class="material-icons">
+                                person
+                            </i>
+                            <div class="description">
+                                {{ avatar.description}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
